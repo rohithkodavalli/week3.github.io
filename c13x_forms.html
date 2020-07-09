@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <title>Complete a Form</title>
+    <style>
+    	* {
+    		margin: 0;
+    		padding: 0;
+    	}
+		body {
+			font: 87.5% Arial, Helvetica, sans-serif;
+			width: 500px;
+		    margin: 20px auto;
+		    padding: 20px;
+		    border: 2px solid blue;
+		}
+		h1 {
+			color: blue; 
+			font-size: 140%;
+		}
+		h2 {
+			font-size: 115%;
+			padding: .5em 0;
+		}
+		label {
+			color: blue;
+			float: left;
+			width: 8em;
+			font-weight: bold;
+			text-align: left;
+		}
+		input {
+			width: 15em;
+			margin: 0 0 .5em 1em;
+		}
+		input {
+			width: 15em;
+			margin: 0 0 .5em 1em;
+		}
+		#button, #reset {
+			width: 7em;
+			background-color: silver;
+			box-shadow: 2px 2px 0 blue; }
+		#button {
+			margin-left: 9em;
+		}
+		input:required {
+		    box-shadow:none;
+		}
+		input:invalid {
+		    box-shadow:none;
+		}
+		input[type="checkbox"] {
+		    width: 2em;
+			margin: 0 0 .5em 1em;
+		}
+	</style>
+</head>
+
+<body>
+<h1>Please complete our survey</h1>
+<form name="myform" onsubmit="return validate()" action="survey_data.html" method="get" >
+	
+	<h2>Contact information</h2>
+	<label for="email">Email address:</label>
+    <input type="email" name="email" id="email" autofocus="" required><br>
+    <label for="firstname">First name:</label>
+    <input type="text" name="firstname" id="firstname" required><br>
+    <label for="lastname">Last name:</label> 
+    <input type="text" name="lastname" id="lastname" required><br>
+
+    <h2>Geographic information</h2>
+
+    <label for="lastname">State:</label>
+    <input type="text" name="state" id="state" required placeholder="Two characters"><br>
+    <label for="lastname">Zip code:</label>
+    <input type="text" name="zip_code" id="zip_code" required placeholder="Five digits"><br>
+
+    <h2>How did you hear about us</h2>
+
+
+
+    <label for="lastname">Web search:</label>
+    <input type="checkbox" name="Web_search" value="Web search" id="Web_search"><br>
+    <label for="lastname">Facebook:</label>
+    <input type="checkbox" name="Facebook" value="Facebook" id="Facebook"><br>
+    <label for="lastname"> Twitter:</label>
+    <input type="checkbox" name="twitter" value="twitter" id="twitter"><br>
+    <label for="lastname"> Email message:</label>
+    <input type="checkbox" name="email_message" value="Email message" id="email_message"><br>
+    
+    <h2>Thank you for taking our survey!</h2>
+    <input type="submit" name="button" id="button" value="Submit">
+    <input type="reset" name="reset" id="reset"> 
+
+
+</form>
+
+<script type="text/javascript">
+function validate() {
+	var state_vald = /^[A-Za-z]{2}$/;
+    var zipcode_vald = /^\d{5}$/;
+
+    var state = document.getElementById('state').value;
+    var zip = document.getElementById('zip_code').value;
+
+    var validateZip = zipcode_vald.test(zip);
+    var validateState = state_vald.test(state);
+
+  if(validateZip == false)
+  {
+    alert('Please enter a valid zip code');
+    return false;
+  }
+
+  if(validateState == false)
+  {
+    alert('Please enter a valid State');
+    return false;
+  }
+
+  return true;
+
+}
+</script>
+</body>
+</html>
